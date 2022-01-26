@@ -12,10 +12,10 @@ for _ in range(N): #AAA, AABC 등 input의 list를 생성
     word = list(input())
     words.append(word)
 
-for word in words: #100의자리 1번 10의 자리 1번이면 value가 110 되게 끔 설정
+for word in words: #***100의자리 1번 10의 자리 1번이면 value가 110 되게 끔 설정
     for i in range(len(word)):
         num = 10**(len(word) - 1 - i) 
-        alpha_dict[word[i]] += num
+        alpha_dict[word[i]] += num #***value값을 update
 
 for v in alpha_dict.values(): #10000, 1010, 1000, 110 등 전부 추가
     if v > 0:
