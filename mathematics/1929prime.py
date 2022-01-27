@@ -13,7 +13,7 @@ for i in range(M, N+1):
     if check_prime(i):
         print(i)
 
-#TF return하는 함수 사용하는 것도 좋은 방법
+#TF return하는 함수 사용하는 것은 매우 좋은 방법 => 나중에 관련 문제에서 다시 활용 가능
 
 #n = a * b
 

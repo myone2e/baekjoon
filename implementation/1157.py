@@ -1,10 +1,16 @@
-word = input().upper() #대문자 변환
-word_list = list(set(word))
+word = input().upper()
+word.sort()
+S = set(list(word)) # alphabet 하나씩만
 
-buffer = []
-for alphabet in word_list:
-    count = word.count(alphabet)
-    buffer.append(count)
-max = max(buffer)
-
+lst = []
+for w in S:
+    cnt = 0
+    for a in word:
+        if a == w:
+            cnt += 1
+        lst.append(cnt)
+max = max(lst)
+print(max)
+        
+        
 

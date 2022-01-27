@@ -3,5 +3,7 @@ lst = []
 for _ in range(N):
     n = int(input())
     lst.append(n)
-lst2 = list(set(lst))
+lst.sort()
+for i in lst:
+    print(i)
 
