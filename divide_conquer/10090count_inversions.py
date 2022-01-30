@@ -1,7 +1,9 @@
 import sys
-input=sys.stdin.readline
+input = sys.stdin.readline
 
-def merge(C,D):
+# Stanford Algorithms week2 
+
+def merge(C, D): # sorted Arrays
     global cnt
     lc, ld = len(C), len(D)
     i, j = 0, 0
@@ -25,14 +27,14 @@ def merge(C,D):
 def merge_sort(A):
     if len(A) <= 1:
         return A
-    mid = (len(A) - 1) // 2 # len(A) 쓰면 recursion error
-    C = merge_sort(A[:mid+1])
-    D = merge_sort(A[mid+1:])
+    nby2 = int((len(A)) // 2)
+    C = merge_sort(A[:nby2])
+    D = merge_sort(A[nby2:])
     
     return merge(C, D)
 
 N = int(input())
 cnt = 0
-lst = list(map(int, input().split()))
+lst = list(map(int,input().split()))
 merge_sort(lst)
 print(cnt)
