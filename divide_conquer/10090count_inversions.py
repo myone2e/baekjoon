@@ -3,7 +3,7 @@ input = sys.stdin.readline
 
 # Stanford Algorithms week2 
 
-def merge(C, D): # sorted Arrays
+def merge_and_countsplitinv(C, D): # sorted Arrays
     global cnt
     lc, ld = len(C), len(D)
     i, j = 0, 0
@@ -23,18 +23,18 @@ def merge(C, D): # sorted Arrays
     
     return B
                 
-
-def merge_sort(A):
+# Recursively call merge
+def merge_and_countinv(A):
     if len(A) <= 1:
         return A
     nby2 = int((len(A)) // 2)
-    C = merge_sort(A[:nby2])
-    D = merge_sort(A[nby2:])
+    C = merge_and_countinv(A[:nby2])
+    D = merge_and_countinv(A[nby2:])
     
-    return merge(C, D)
+    return merge_and_countsplitinv(C, D)
 
 N = int(input())
 cnt = 0
 lst = list(map(int,input().split()))
-merge_sort(lst)
+merge_and_countinv(lst)
 print(cnt)
