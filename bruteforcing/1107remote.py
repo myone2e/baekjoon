@@ -11,7 +11,7 @@ for nums in range(1000001): # also have to check above the goal (500000 * 2)
     nums = str(nums)
     
     for j in range(len(nums)):
-        if int(nums[j]) in broken: # if there is broken number
+        if int(nums[j]) in broken: # find the value we can shift to!!
             break
 
         elif j == len(nums) - 1: # there aren't broken numbers => candidate for min count
