@@ -22,11 +22,11 @@
         ""
       ],
       "stopAtEntry": true,
-      "cwd": "/Users/captain/GitHub/kaist/baekjoon",
+      "cwd": "/Users/captain/GitHub/kaist/baekjoon/C++/greedy",
       "environment": [],
-      "program": "/Users/captain/GitHub/kaist/baekjoon/build/Debug/outDebug",
+      "program": "/Users/captain/GitHub/kaist/baekjoon/C++/greedy/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
+      "MIMode": "lldb",
       "externalConsole": true
     }
   ]
