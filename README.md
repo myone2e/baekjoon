@@ -1,2 +1,2 @@
 # baekjoon
-storage for my work
+storage for baekjoon online judge solutions
