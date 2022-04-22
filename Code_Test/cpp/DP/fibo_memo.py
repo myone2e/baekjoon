@@ -2,7 +2,6 @@
 d = [0] * 100 # Memoization
 
 def fibo(x):
-    print('f(' + str(x) + ')', end = ' ')
     if x == 1 or x == 2:
         return 1
     

@@ -4,7 +4,7 @@ def dfs(graph, v, visited):
     # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
     for i in graph[v]: # 1번 노드 => 2, 3, 8
         if not visited[i]:
-            dfs(graph, i, visited)
+            dfs(graph, i, visited) ## i가 다시 v로 들어가는 구조!
 
 graph = [
     [], # 첫 칸을 비워놓고 노드 번호대로 가도록!
