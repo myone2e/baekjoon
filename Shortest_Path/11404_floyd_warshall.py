@@ -15,7 +15,8 @@ for a in range(1, n+1):
 # Receive info of edges
 for _ in range(m): 
     a, b, c = map(int, input().split()) # start, end, dist
-    graph[a][b] = c
+    if graph[a][b] > c: # 하나 이상의 경로가 주어질 수 있는 조건 존재
+        graph[a][b] = c
 
 for k in range(1, n+1): # for n nodes (거쳐 가는 노드로):
     for a in range(1, n+1): # starting point
@@ -25,7 +26,7 @@ for k in range(1, n+1): # for n nodes (거쳐 가는 노드로):
 for a in range(1, n+1):
     for b in range(1, n+1):
         if graph[a][b] == INF:
-            print('INF', end = ' ')
+            print(0, end = ' ')
         else:
             print(graph[a][b], end = ' ')
     print()
