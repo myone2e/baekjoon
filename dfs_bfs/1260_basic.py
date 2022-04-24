@@ -18,9 +18,9 @@ def dfs(graph, v, visited):
     visited[v] = True # 현재 노드를 방문 처리
     print(v, end=' ')
     # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
-    for i in graph[v]: # 1번 노드 => 2, 3, 8 순서대로
-        if not visited[i]: # if visitied[i] == 0
-            dfs(graph, i, visited) ## i가 다시 v로
+    for i in graph[v]: # 1번 노드 => 연결된 애들 순서대로
+        if not visited[i]: # 방문 안했으면
+            dfs(graph, i, visited) # 거기서 다시 깊게
 
 def bfs(graph, start, visited):
     queue = deque([start])
@@ -30,11 +30,10 @@ def bfs(graph, start, visited):
     while queue:
         v = queue.popleft()
         print(v, end = ' ')
-        # 해당 원소와 연결되고 아직 방문하지 않은 원소를 삽입
-        for i in graph[v]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
+        for i in graph[v]: # 연결된 애들
+            if not visited[i]: # 방문 안했다면
+                queue.append(i) # 큐에 넣고 => 얘가 다음 순서 v
+                visited[i] = True # 방문처리
 
 dfs(graph, V, visited)
 print()

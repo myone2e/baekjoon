@@ -1,6 +1,7 @@
 import sys
 input = sys.stdin.readline
 # 0으로 이루어진 area 찾기
+# 여기는 단지와 반대로 1로 만들고 0이면 bfs 수행
 
 n, m = map(int, input().split())
 graph = []
