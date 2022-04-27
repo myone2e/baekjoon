@@ -1,11 +1,12 @@
 import sys
 input = sys.stdin.readline
 INF = int(1e9)
+# Dijkstra: 인접 리스트를 이용하는 방식. 노드 갯수 만큼 리스트를 만들어 각 노드와 연결된 모든 간선에 대한 모든 정보를 리스트에 저장
 
 n, m = map(int, input().split()) # num vertices, num edges
 start = int(input())
 
-graph = [[] for i in range(n+1)] # +1 for indexing (vertex starts at 1)
+graph = [[] for i in range(n+1)] # +1 for indexing (vertex starts at 1) 
 visited = [False] * (n+1)
 distance = [INF] * (n+1) # shortest distance table
 

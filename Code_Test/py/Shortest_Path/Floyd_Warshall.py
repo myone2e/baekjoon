@@ -1,44 +1,33 @@
 import sys
-import heapq
 input = sys.stdin.readline
 
-# 전보를 받는 도시 수 & 총 시간
+# 플로이드는 인접 행렬 이용하는 방식. 모든 노드에 대하여 다른 노드로 가는 비용을 2차원 리스트에 저장
 
-n, m, city = map(int,input().split())
 INF = int(1e9)
-graph = [[] for _ in range(n+1)]
+n, m = map(int, input().split())
 
-distance = [INF] * (n+1) # 최단 거리 테이블 필요
+graph = [[INF]*(n+1) for _ in range(n+1)] # n+1 x n+1 matrix
+
+for a in range(1, n+1):
+    for b in range(1, n+1):
+        if a == b:
+            graph[a][b] = 0
 
 for _ in range(m):
-    a, b, c = map(int, input().split())
-    graph[a].append((b,c)) # 다익스트라 그래프는 (도착점, 거리) 형식으로 담음
+    a, b = map(int, input().split())
+    graph[a][b] = 1 # 거리가 무조건 1이기 때문에 ! 앞에서의 c는 주어지지 않음
+    graph[b][a] = 1
 
-def dijkstra(start):
-    q = []
-    heapq.heappush(q, (0, start)) # list, (distance, node)
-    distance[start] = 0 # 자기 자신과의 거리는 0
-    
-    while q:
-        dist, now = heapq.heappop(q) # 힙에는 (거리, 노드) 순으로 담음. 정렬 때문에
-        
-        if distance[now] < dist: # 이미 처리한 노드라면 무시 (그림에서 뽑은 놈이 테이블에 밀리는 case)
-            continue
-        
-        for j in graph[now]: # j는 (end, dist) 튜플. 연결된 애들을 하나씩 확인
-            cost = dist + j[1] # now 노드를 거쳐서 j의 end로 가는 비용
-            if cost < distance[j[0]]:
-                distance[j[0]] = cost
-                heapq.heappush(q, (cost, j[0])) # 갱신된 거리랑 end 노드를 다시 넣어줌
+x, k = map(int, input().split()) # 목표, 중간 지점
 
-dijkstra(city)
+for k in range(1, n+1): # for n nodes (거쳐 가는 노드로)
+    for a in range(1, n+1): # starting point
+        for b in range(1, n+1):
+            graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b]) # direct or pass through
 
-cnt = 0 # 도달 할 수 있는 도시의 개수
+distance = graph[1][k] + graph[k][x]
 
-max_diatance = 0
-for d in distance:
-    if d != INF:
-        cnt += 1
-        max_diatance = max(max_diatance, d)
-
-print(cnt - 1, max_diatance) # 시작 노드는 제외해야 해서 - 1
+if distance >= INF:
+    print(-1)
+else:
+    print(distance)
